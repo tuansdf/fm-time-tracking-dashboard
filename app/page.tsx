@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Folder from "/app/folder";
+import Option from "/app/option";
 
 import iconExercise from "/public/images/icon-exercise.svg";
 import iconPlay from "/public/images/icon-play.svg";
@@ -28,9 +29,9 @@ export default function Page() {
           </div>
         </div>
         <div className="flex items-center justify-between p-6 text-lg text-desaturated-blue xl:flex-col xl:items-start xl:gap-4">
-          <button className="px-2">Daily</button>
-          <button className="px-2 text-white">Weekly</button>
-          <button className="px-2">Monthly</button>
+          <Option>Daily</Option>
+          <Option isActive>Weekly</Option>
+          <Option>Monthly</Option>
         </div>
       </div>
 

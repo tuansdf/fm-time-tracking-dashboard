@@ -25,7 +25,7 @@ export default function Folder({
         <Image src={iconSrc} alt="" className="absolute right-0 mb-6" />
       </div>
 
-      <div className="relative z-10 mt-10 rounded-2xl bg-dark-blue p-6 text-white xl:mt-11 xl:flex-col xl:items-start xl:p-8">
+      <div className="relative mt-10 cursor-pointer rounded-2xl bg-dark-blue p-6 text-white transition-opacity hover:opacity-90 xl:mt-11 xl:flex-col xl:items-start xl:p-8">
         <div className="flex w-full items-baseline justify-between">
           <div className="text-lg font-medium">{title}</div>
           <Image src={iconEllipsis} alt="" />
