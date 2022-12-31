@@ -22,7 +22,7 @@ export default function Page() {
           />
           <div className="xl:mt-4">
             <div className="text-lg text-pale-blue">Report for</div>
-            <div className="text-3xl font-light text-white xl:text-5xl">
+            <div className="text-3xl font-light text-white xl:mt-2 xl:text-5xl">
               Jeremy Robson
             </div>
           </div>

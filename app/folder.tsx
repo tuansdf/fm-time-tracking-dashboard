@@ -19,16 +19,13 @@ export default function Folder({
 }: IProps) {
   return (
     <div
-      className={
-        "relative flex w-full flex-col overflow-hidden rounded-2xl " +
-        containerClassName
-      }
+      className={"relative rounded-t-2xl rounded-b-3xl " + containerClassName}
     >
-      <div className="relative -top-4 mx-6 flex h-20 items-center justify-center self-end">
-        <Image src={iconSrc} alt="" />
+      <div className="absolute top-0 right-0 mx-6 flex aspect-square h-20 items-center justify-center overflow-hidden">
+        <Image src={iconSrc} alt="" className="absolute right-0 mb-6" />
       </div>
 
-      <div className="z-10 -mt-10 rounded-2xl bg-dark-blue p-6 text-white xl:flex-col xl:items-start xl:p-8">
+      <div className="relative z-10 mt-10 rounded-2xl bg-dark-blue p-6 text-white xl:mt-11 xl:flex-col xl:items-start xl:p-8">
         <div className="flex w-full items-baseline justify-between">
           <div className="text-lg font-medium">{title}</div>
           <Image src={iconEllipsis} alt="" />
