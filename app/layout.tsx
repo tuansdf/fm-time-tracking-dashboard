@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { primaryFont } from "/app/fonts";
 
 interface IProps {
   children: ReactNode;
@@ -10,8 +11,8 @@ export default function Layout({ children }: IProps) {
       <head>
         <title>Time Tracking Dashboard - Frontend Mentor - Tuan Nguyen</title>
       </head>
-      <body>
-        <main>{children}</main>
+      <body className={primaryFont.className}>
+        <main className="mx-auto max-w-sm xl:max-w-6xl">{children}</main>
       </body>
     </html>
   );
