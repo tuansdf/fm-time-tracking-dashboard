@@ -27,15 +27,18 @@ export default function Folder({
       <div className="relative -top-4 mx-6 flex h-20 items-center justify-center self-end">
         <Image src={iconSrc} alt="" />
       </div>
-      <div className="z-10 -mt-10 flex items-end justify-between rounded-2xl bg-dark-blue p-6 text-white">
-        <div>
+
+      <div className="z-10 -mt-10 rounded-2xl bg-dark-blue p-6 text-white xl:flex-col xl:items-start xl:p-8">
+        <div className="flex w-full items-baseline justify-between">
           <div className="text-lg font-medium">{title}</div>
-          <div className="mt-2 text-3xl font-light">{time}</div>
+          <Image src={iconEllipsis} alt="" />
         </div>
 
-        <div className="flex flex-col items-end gap-6 text-pale-blue">
-          <Image src={iconEllipsis} alt="" />
-          <div>Last Week - {timeLastWeek}</div>
+        <div className="mt-2 flex items-baseline justify-between xl:mt-8 xl:flex-col">
+          <div className="text-3xl font-light xl:text-6xl">{time}</div>
+          <div className="text-pale-blue xl:mt-4">
+            Last Week - {timeLastWeek}
+          </div>
         </div>
       </div>
     </div>

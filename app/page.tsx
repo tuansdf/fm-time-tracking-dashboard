@@ -11,21 +11,23 @@ import imageJeremy from "/public/images/image-jeremy.png";
 
 export default function Page() {
   return (
-    <div className="space-y-6">
-      <div className="rounded-2xl bg-dark-blue">
-        <div className="flex items-center gap-6 rounded-2xl bg-blue p-8">
+    <div className="grid gap-6 xl:grid-cols-4 xl:gap-8">
+      <div className="row-span-2 flex flex-col rounded-2xl bg-dark-blue">
+        <div className="flex flex-1 items-center gap-6 rounded-2xl bg-blue p-8 xl:flex-col xl:items-start">
           <Image
             src={imageJeremy}
             alt=""
             width={80}
             className="rounded-full border-4 border-white"
           />
-          <div>
+          <div className="xl:mt-4">
             <div className="text-lg text-pale-blue">Report for</div>
-            <div className="text-3xl font-light text-white">Jeremy Robson</div>
+            <div className="text-3xl font-light text-white xl:text-5xl">
+              Jeremy Robson
+            </div>
           </div>
         </div>
-        <div className="flex items-center justify-between p-6 text-lg text-desaturated-blue">
+        <div className="flex items-center justify-between p-6 text-lg text-desaturated-blue xl:flex-col xl:items-start xl:gap-4">
           <button className="px-2">Daily</button>
           <button className="px-2 text-white">Weekly</button>
           <button className="px-2">Monthly</button>
