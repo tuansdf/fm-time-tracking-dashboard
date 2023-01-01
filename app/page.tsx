@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import Folder from "/app/folder";
 import Option from "/app/option";
 
@@ -10,7 +13,54 @@ import iconStudy from "/public/images/icon-study.svg";
 import iconWork from "/public/images/icon-work.svg";
 import imageJeremy from "/public/images/image-jeremy.png";
 
+const decorates = [
+  {
+    icon: iconWork,
+    background: "bg-light-red-work",
+  },
+  {
+    icon: iconPlay,
+    background: "bg-soft-blue",
+  },
+  {
+    icon: iconStudy,
+    background: "bg-light-red-study",
+  },
+  {
+    icon: iconExercise,
+    background: "bg-lime-green",
+  },
+  {
+    icon: iconSocial,
+    background: "bg-violet",
+  },
+  {
+    icon: iconSelfCare,
+    background: "bg-soft-orange",
+  },
+];
+
 export default function Page() {
+  const [data, setData] = useState(null);
+  const [category, setCategory] = useState<"daily" | "weekly" | "monthly">(
+    "daily"
+  );
+
+  const getData = async () => {
+    const res = await fetch("/data.json");
+    if (!res.ok) setData(null);
+    const data = await res.json();
+    setData(data);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  if (!data) {
+    return null;
+  }
+
   return (
     <div className="grid gap-6 xl:grid-cols-4 xl:gap-8">
       <div className="row-span-2 flex flex-col rounded-2xl bg-dark-blue">
@@ -29,54 +79,38 @@ export default function Page() {
           </div>
         </div>
         <div className="flex items-center justify-between p-6 text-lg text-desaturated-blue xl:flex-col xl:items-start xl:gap-4">
-          <Option>Daily</Option>
-          <Option isActive>Weekly</Option>
-          <Option>Monthly</Option>
+          <Option
+            onClick={() => setCategory("daily")}
+            isActive={category === "daily"}
+          >
+            Daily
+          </Option>
+          <Option
+            onClick={() => setCategory("weekly")}
+            isActive={category === "weekly"}
+          >
+            Weekly
+          </Option>
+          <Option
+            onClick={() => setCategory("monthly")}
+            isActive={category === "monthly"}
+          >
+            Monthly
+          </Option>
         </div>
       </div>
 
-      <Folder
-        iconSrc={iconWork}
-        title="Work"
-        time="32hrs"
-        timeLastWeek="36hrs"
-        containerClassName="bg-light-red-work"
-      />
-      <Folder
-        iconSrc={iconPlay}
-        title="Play"
-        time="10hrs"
-        timeLastWeek="8hrs"
-        containerClassName="bg-soft-blue"
-      />
-      <Folder
-        iconSrc={iconStudy}
-        title="Study"
-        time="4hrs"
-        timeLastWeek="7hrs"
-        containerClassName="bg-light-red-study"
-      />
-      <Folder
-        iconSrc={iconExercise}
-        title="Exercise"
-        time="4hrs"
-        timeLastWeek="5hrs"
-        containerClassName="bg-lime-green"
-      />
-      <Folder
-        iconSrc={iconSocial}
-        title="Social"
-        time="5hrs"
-        timeLastWeek="10hrs"
-        containerClassName="bg-violet"
-      />
-      <Folder
-        iconSrc={iconSelfCare}
-        title="Self Care"
-        time="2hrs"
-        timeLastWeek="2hrs"
-        containerClassName="bg-soft-orange"
-      />
+      {/* @ts-ignore */}
+      {data.map((folder, i) => (
+        <Folder
+          key={i}
+          iconSrc={decorates[i].icon}
+          title={folder.title}
+          timeframes={folder.timeframes}
+          selectedCategory={category}
+          containerClassName={decorates[i].background}
+        />
+      ))}
     </div>
   );
 }

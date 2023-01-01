@@ -1,5 +1,3 @@
-"use client";
-
 import { ReactNode } from "react";
 import { primaryFont } from "/app/fonts";
 import "/styles/globals.css";

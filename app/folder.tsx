@@ -5,17 +5,27 @@ import iconEllipsis from "/public/images/icon-ellipsis.svg";
 interface IProps {
   iconSrc: any;
   title: string;
-  time: string;
-  timeLastWeek: string;
+  timeframes: ITimeframes;
+  selectedCategory: "daily" | "weekly" | "monthly";
   containerClassName?: string;
+}
+
+interface ITimeframes {
+  daily: ITimeframe;
+  weekly: ITimeframe;
+  monthly: ITimeframe;
+}
+interface ITimeframe {
+  current: number;
+  previous: number;
 }
 
 export default function Folder({
   iconSrc,
   title,
-  time,
   containerClassName,
-  timeLastWeek,
+  selectedCategory,
+  timeframes,
 }: IProps) {
   return (
     <div
@@ -32,9 +42,11 @@ export default function Folder({
         </div>
 
         <div className="mt-2 flex items-baseline justify-between xl:mt-8 xl:flex-col">
-          <div className="text-3xl font-light xl:text-6xl">{time}</div>
+          <div className="text-3xl font-light xl:text-6xl">
+            {timeframes[selectedCategory]?.current}hrs
+          </div>
           <div className="text-pale-blue xl:mt-4">
-            Last Week - {timeLastWeek}
+            Last Week - {timeframes[selectedCategory]?.previous}hrs
           </div>
         </div>
       </div>
